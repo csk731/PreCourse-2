@@ -1,3 +1,6 @@
+// Time Complexity: O(n^2)
+// Space Complexity: O(n)
+
 class Exercise_2 
 { 
     /* This function takes last element as pivot, 

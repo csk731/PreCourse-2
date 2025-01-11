@@ -34,24 +34,23 @@ class Exercise_5 {
     // Sorts arr[l..h] using iterative QuickSort 
     void QuickSort(int arr[], int l, int h) 
     { 
-        //Try using Stack Data Structure to remove recursion.
-        Stack<Integer> stack = new Stack<>();
+        Stack<Integer> stack = new Stack<Integer>();
         stack.push(l);
         stack.push(h);
-
         while (!stack.isEmpty()) {
-            h = stack.pop();
-            l = stack.pop();
-            int p = partition(arr, l, h);
+            int nh = stack.pop();
+            int nl = stack.pop();
 
-            if (p - 1 > l) {
-                stack.push(l);
-                stack.push(p - 1);
-            }
-            if (p + 1 < h) {
-                stack.push(p + 1);
-                stack.push(h);
-            }
+            if (nl >= nh)
+                continue;
+
+            int pivot = partition(arr, nl, nh);
+
+            stack.push(nl);
+            stack.push(pivot - 1);
+
+            stack.push(pivot + 1);
+            stack.push(nh);
         }
     } 
   
